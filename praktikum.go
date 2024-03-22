@@ -65,3 +65,6 @@ func GetAllPresensi() (data []Presensi) {
 	}
 	return
 }
+
+
+/// Test sangu
