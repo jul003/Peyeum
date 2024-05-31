@@ -1,4 +1,4 @@
-package _714220030
+package model
 
 import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
