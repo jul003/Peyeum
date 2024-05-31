@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"go.mongodb.org/mongo-driver/bson"
-	"github.com/indrariksa/cobapakcage/model"
+	"github.com/jul003/Peyeum/model"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"time"
 
