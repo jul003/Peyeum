@@ -3,7 +3,6 @@ package _714220030
 import (
 	"fmt"
 	"testing"
-
 	"github.com/jul003/Peyeum/model"
 	"github.com/jul003/Peyeum/module"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -73,5 +72,24 @@ func TestGetPresensiFromID(t *testing.T) {
 func TestGetAll(t *testing.T) {
 	data := module.GetAllPresensi(module.MongoConn, "presensi")
 	fmt.Println(data)
+}
+
+func TestDeletePresensiByID(t *testing.T) {
+	id := "65fd420e31cb19443d9ddb9d" // ID data yang ingin dihapus
+	objectID, err := primitive.ObjectIDFromHex(id)
+	if err != nil {
+		t.Fatalf("error converting id to ObjectID: %v", err)
+	}
+
+	err = module.DeletePresensiByID(objectID, module.MongoConn, "presensi")
+	if err != nil {
+		t.Fatalf("error calling DeletePresensiByID: %v", err)
+	}
+
+	// Verifikasi bahwa data telah dihapus dengan melakukan pengecekan menggunakan GetPresensiFromID
+	_, err = module.GetPresensiFromID(objectID, module.MongoConn, "presensi")
+	if err == nil {
+		t.Fatalf("expected data to be deleted, but it still exists")
+	}
 }
 
